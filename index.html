@@ -393,6 +393,75 @@ body::before{
 .tm-empty{text-align:center;padding:1.5rem 1rem;color:var(--text3);font-size:12px}
 .tm-empty i{font-size:2rem;display:block;margin-bottom:8px;opacity:.25}
 @media(max-width:480px){.tm-form-row{grid-template-columns:1fr 1fr}}
+
+/* ===== LIGHT MODE ===== */
+html.light-mode{
+  --bg:#f0f4f8;--bg2:#e8edf3;--bg3:#d1d9e4;
+  --surface:#ffffff;--surface2:#f8fafc;
+  --text:#0f172a;--text2:#475569;--text3:#94a3b8;
+  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.15);
+  --shadow:0 4px 24px rgba(0,0,0,0.1);--shadow-sm:0 2px 8px rgba(0,0,0,0.06);
+}
+html.light-mode body{background:var(--bg)}
+html.light-mode body::before{
+  background:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(37,99,235,0.07) 0%,transparent 60%),
+             radial-gradient(ellipse 60% 50% at 80% 80%,rgba(124,58,237,0.04) 0%,transparent 60%);
+}
+html.light-mode .fg select,html.light-mode .fg input,
+html.light-mode .fg select option,
+html.light-mode .tm-fg input{background:var(--bg2);color:var(--text)}
+html.light-mode .adm-modal-input,html.light-mode .modal-note,
+html.light-mode .msg-custom,html.light-mode .msg-custom{background:var(--bg2);color:var(--text)}
+
+/* ===== FONT SIZES ===== */
+html.fs-small body{font-size:13px}
+html.fs-medium body{font-size:15px}
+html.fs-large body{font-size:17px}
+html.fs-large .s-subject{font-size:15px}
+html.fs-large .tab{font-size:13px}
+html.fs-small .s-subject{font-size:13px}
+
+/* ===== SETTINGS DRAWER ===== */
+.settings-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);z-index:300;display:none;align-items:flex-start;justify-content:flex-start}
+.settings-overlay.open{display:flex}
+.settings-drawer{background:var(--surface);width:min(380px,100vw);height:100vh;overflow-y:auto;box-shadow:8px 0 32px rgba(0,0,0,.4);display:flex;flex-direction:column;animation:slideInLeft .25s ease}
+@keyframes slideInLeft{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+.settings-header{padding:1.25rem 1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--surface);z-index:1}
+.settings-header h2{font-size:16px;font-weight:800;color:var(--text);display:flex;align-items:center;gap:8px;margin:0}
+.settings-close{width:32px;height:32px;border-radius:8px;border:1px solid var(--border2);background:none;cursor:pointer;color:var(--text2);display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .2s}
+.settings-close:hover{border-color:var(--red);color:var(--red)}
+.settings-body{padding:1rem;flex:1}
+.settings-section{margin-bottom:1.5rem}
+.settings-section-title{font-size:11px;font-weight:800;color:var(--text3);letter-spacing:1px;text-transform:uppercase;margin-bottom:.75rem;display:flex;align-items:center;gap:6px}
+.settings-row{display:flex;align-items:center;justify-content:space-between;padding:.65rem .75rem;background:var(--bg);border-radius:10px;margin-bottom:6px;border:1px solid var(--border);gap:8px}
+.settings-row-label{display:flex;flex-direction:column;gap:2px;flex:1}
+.settings-row-label span{font-size:13px;font-weight:600;color:var(--text)}
+.settings-row-label small{font-size:11px;color:var(--text3)}
+.toggle-sw{position:relative;width:44px;height:24px;flex-shrink:0}
+.toggle-sw input{opacity:0;width:0;height:0;position:absolute}
+.toggle-sw .sw-slider{position:absolute;inset:0;background:var(--bg3);border-radius:99px;cursor:pointer;transition:.25s}
+.toggle-sw .sw-slider::before{content:'';position:absolute;width:18px;height:18px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.25s;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.toggle-sw input:checked+.sw-slider{background:var(--blue)}
+.toggle-sw input:checked+.sw-slider::before{transform:translateX(20px)}
+.font-size-btns{display:flex;gap:4px;flex-shrink:0}
+.fs-btn{padding:5px 10px;border-radius:8px;border:1px solid var(--border2);background:none;cursor:pointer;font-weight:700;color:var(--text3);transition:all .18s;font-family:var(--font)}
+.fs-btn.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.theme-btns{display:flex;gap:4px;flex-shrink:0}
+.theme-btn{padding:5px 10px;border-radius:8px;border:1px solid var(--border2);background:none;cursor:pointer;font-size:12px;font-weight:700;color:var(--text3);transition:all .18s;font-family:var(--font);display:flex;align-items:center;gap:4px}
+.theme-btn.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.settings-save-btn{width:100%;background:var(--blue);color:#fff;border:none;border-radius:10px;padding:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--font);transition:all .2s;margin-top:.5rem;display:flex;align-items:center;justify-content:center;gap:6px}
+.settings-save-btn:hover{background:var(--blue-dark)}
+.notif-permission-row{display:flex;align-items:center;gap:8px;padding:.65rem .75rem;background:rgba(37,99,235,.07);border:1px solid rgba(37,99,235,.2);border-radius:10px;margin-bottom:.75rem}
+.notif-perm-icon{font-size:20px;flex-shrink:0}
+.notif-perm-info{flex:1}
+.notif-perm-info span{font-size:12px;font-weight:700;color:var(--text)}
+.notif-perm-info small{display:block;font-size:11px;color:var(--text3);margin-top:2px}
+.notif-perm-btn{padding:5px 12px;border-radius:8px;border:none;background:var(--blue);color:#fff;font-size:11px;font-weight:700;cursor:pointer;font-family:var(--font);flex-shrink:0;transition:all .18s}
+.notif-perm-btn:hover{background:var(--blue-dark)}
+.notif-perm-btn:disabled{opacity:.5;cursor:default}
+.nav-settings-btn{width:32px;height:32px;border:1px solid var(--border2);border-radius:8px;background:none;cursor:pointer;color:var(--text3);display:flex;align-items:center;justify-content:center;font-size:15px;transition:all .2s}
+.nav-settings-btn:hover{border-color:var(--blue);color:var(--blue);background:rgba(37,99,235,.1)}
+.settings-divider{height:1px;background:var(--border);margin:.75rem 0}
 </style>
 </head>
 <body>
@@ -453,6 +522,7 @@ body::before{
         <div class="parent-badge"><i class="ti ti-heart" style="font-size:11px"></i>ولي أمر</div>
         <div class="nav-avatar" id="par-avatar">و</div>
         <div class="nav-name" id="par-name">—</div>
+        <button class="nav-settings-btn" onclick="openSettings()" title="الإعدادات"><i class="ti ti-settings"></i></button>
         <button class="nav-logout" onclick="doLogout()" title="خروج"><i class="ti ti-logout"></i></button>
       </div>
     </div>
@@ -550,6 +620,7 @@ body::before{
         <div id="nav-admin-badge" class="admin-badge" style="display:none"><i class="ti ti-shield-check" style="font-size:11px"></i>أدمن</div>
         <div class="nav-avatar" id="nav-avatar">؟</div>
         <div class="nav-name" id="nav-name">—</div>
+        <button class="nav-settings-btn" onclick="openSettings()" title="الإعدادات"><i class="ti ti-settings"></i></button>
         <button class="nav-logout" onclick="doLogout()" title="خروج"><i class="ti ti-logout"></i></button>
       </div>
     </div>
@@ -830,6 +901,151 @@ body::before{
 </div>
 
 <div class="toast" id="toast"></div>
+
+<!-- ===== SETTINGS DRAWER ===== -->
+<div class="settings-overlay" id="settings-overlay" onclick="settingsOverlayClick(event)">
+  <div class="settings-drawer">
+    <div class="settings-header">
+      <h2><i class="ti ti-settings" style="color:var(--blue)"></i> الإعدادات</h2>
+      <button class="settings-close" onclick="closeSettings()"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="settings-body">
+
+      <!-- APPEARANCE -->
+      <div class="settings-section">
+        <div class="settings-section-title"><i class="ti ti-palette"></i> المظهر</div>
+        <div class="settings-row">
+          <div class="settings-row-label">
+            <span>وضع النهار / الليل</span>
+            <small>تبديل بين الوضع الداكن والفاتح</small>
+          </div>
+          <div class="theme-btns">
+            <button class="theme-btn active" id="theme-dark-btn" onclick="setTheme('dark')"><i class="ti ti-moon"></i> داكن</button>
+            <button class="theme-btn" id="theme-light-btn" onclick="setTheme('light')"><i class="ti ti-sun"></i> فاتح</button>
+          </div>
+        </div>
+        <div class="settings-row">
+          <div class="settings-row-label">
+            <span>حجم الخط</span>
+            <small>تعديل حجم النصوص في التطبيق</small>
+          </div>
+          <div class="font-size-btns">
+            <button class="fs-btn" id="fs-small-btn" onclick="setFontSize('small')" style="font-size:11px">ص</button>
+            <button class="fs-btn active" id="fs-medium-btn" onclick="setFontSize('medium')" style="font-size:13px">م</button>
+            <button class="fs-btn" id="fs-large-btn" onclick="setFontSize('large')" style="font-size:16px">ك</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-divider"></div>
+
+      <!-- NOTIFICATIONS -->
+      <div class="settings-section">
+        <div class="settings-section-title"><i class="ti ti-bell"></i> الإشعارات</div>
+
+        <!-- Permission request -->
+        <div class="notif-permission-row" id="notif-perm-row">
+          <div class="notif-perm-icon">🔔</div>
+          <div class="notif-perm-info">
+            <span id="notif-perm-label">إذن الإشعارات</span>
+            <small id="notif-perm-sub">اضغط للسماح بالإشعارات</small>
+          </div>
+          <button class="notif-perm-btn" id="notif-perm-btn" onclick="requestNotifPermission()">تفعيل</button>
+        </div>
+
+        <div class="settings-row">
+          <div class="settings-row-label">
+            <span>تشغيل الإشعارات</span>
+            <small>تفعيل / إيقاف جميع الإشعارات</small>
+          </div>
+          <label class="toggle-sw">
+            <input type="checkbox" id="notif-enabled-toggle" onchange="saveSettings()">
+            <span class="sw-slider"></span>
+          </label>
+        </div>
+        <div class="settings-row">
+          <div class="settings-row-label">
+            <span>صوت الإشعارات</span>
+            <small>تشغيل صوت عند وصول الإشعار</small>
+          </div>
+          <label class="toggle-sw">
+            <input type="checkbox" id="notif-sound-toggle" onchange="saveSettings()">
+            <span class="sw-slider"></span>
+          </label>
+        </div>
+        <div class="settings-row">
+          <div class="settings-row-label">
+            <span>تذكير الصلاة</span>
+            <small>إشعار عند أوقات الصلاة (تقريبي)</small>
+          </div>
+          <label class="toggle-sw">
+            <input type="checkbox" id="prayer-reminder-toggle" onchange="saveSettings();setupPrayerReminders()">
+            <span class="sw-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="settings-divider"></div>
+
+      <!-- BROWSER NOTIFICATIONS -->
+      <div class="settings-section">
+        <div class="settings-section-title"><i class="ti ti-bell-ringing"></i> إشعارات المتصفح</div>
+
+        <div class="settings-row">
+          <div class="settings-row-label">
+            <span>رسائل ولي الأمر</span>
+            <small>إشعار عند وصول رسالة جديدة</small>
+          </div>
+          <label class="toggle-sw">
+            <input type="checkbox" id="notif-parent-msg-toggle" onchange="saveSettings()">
+            <span class="sw-slider"></span>
+          </label>
+        </div>
+        <div class="settings-row">
+          <div class="settings-row-label">
+            <span>تذكير الجلسة (5 دقائق)</span>
+            <small>إشعار قبل بدء الجلسة بـ 5 دقائق</small>
+          </div>
+          <label class="toggle-sw">
+            <input type="checkbox" id="notif-session-reminder-toggle" onchange="saveSettings()">
+            <span class="sw-slider"></span>
+          </label>
+        </div>
+        <div class="settings-row">
+          <div class="settings-row-label">
+            <span>اقتراب موعد درس / التزام</span>
+            <small>إشعار عند اقتراب موعد من منظم الوقت</small>
+          </div>
+          <label class="toggle-sw">
+            <input type="checkbox" id="notif-commitment-toggle" onchange="saveSettings()">
+            <span class="sw-slider"></span>
+          </label>
+        </div>
+        <div class="settings-row">
+          <div class="settings-row-label">
+            <span>تسجيل خروج الطالب</span>
+            <small>إشعار لولي الأمر عند خروج الطالب</small>
+          </div>
+          <label class="toggle-sw">
+            <input type="checkbox" id="notif-student-logout-toggle" onchange="saveSettings()">
+            <span class="sw-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="settings-divider"></div>
+
+      <!-- TEST NOTIFICATION -->
+      <button class="settings-save-btn" onclick="testNotification()" style="background:var(--green)">
+        <i class="ti ti-bell-ringing"></i> اختبار الإشعارات
+      </button>
+      <button class="settings-save-btn" onclick="saveSettings();closeSettings()">
+        <i class="ti ti-check"></i> حفظ الإعدادات وإغلاق
+      </button>
+
+    </div>
+  </div>
+</div>
 
 <script>
 // ===== STORAGE HELPERS =====
@@ -2074,5 +2290,548 @@ if('serviceWorker' in navigator){
   });
 }
 </script>
-</body>
+
+<!-- ===== SETTINGS SCRIPT ===== -->
+<script>
+// ===== SETTINGS STORAGE =====
+const SETTINGS_KEY = 'ssp2_userSettings';
+
+const SETTINGS_DEFAULTS = {
+  theme: 'dark',
+  fontSize: 'medium',
+  notificationsEnabled: true,
+  notifSound: true,
+  notifParentMsg: true,
+  notifSessionReminder: true,
+  notifCommitment: true,
+  notifStudentLogout: true,
+  prayerReminder: false
+};
+
+function loadSettingsData() {
+  try {
+    const v = localStorage.getItem(SETTINGS_KEY);
+    return v ? Object.assign({}, SETTINGS_DEFAULTS, JSON.parse(v)) : Object.assign({}, SETTINGS_DEFAULTS);
+  } catch { return Object.assign({}, SETTINGS_DEFAULTS); }
+}
+
+function saveSettings() {
+  const s = {
+    theme: document.getElementById('theme-dark-btn').classList.contains('active') ? 'dark' : 'light',
+    fontSize: getCurrentFontSize(),
+    notificationsEnabled: document.getElementById('notif-enabled-toggle').checked,
+    notifSound: document.getElementById('notif-sound-toggle').checked,
+    notifParentMsg: document.getElementById('notif-parent-msg-toggle').checked,
+    notifSessionReminder: document.getElementById('notif-session-reminder-toggle').checked,
+    notifCommitment: document.getElementById('notif-commitment-toggle').checked,
+    notifStudentLogout: document.getElementById('notif-student-logout-toggle').checked,
+    prayerReminder: document.getElementById('prayer-reminder-toggle').checked
+  };
+  localStorage.setItem(SETTINGS_KEY, JSON.stringify(s));
+  applySettings(s);
+}
+
+function getCurrentFontSize() {
+  if (document.getElementById('fs-small-btn').classList.contains('active')) return 'small';
+  if (document.getElementById('fs-large-btn').classList.contains('active')) return 'large';
+  return 'medium';
+}
+
+function applySettings(s) {
+  const html = document.documentElement;
+  // Theme
+  if (s.theme === 'light') {
+    html.classList.add('light-mode');
+  } else {
+    html.classList.remove('light-mode');
+  }
+  // Font size
+  html.classList.remove('fs-small', 'fs-medium', 'fs-large');
+  html.classList.add('fs-' + s.fontSize);
+  // Setup reminders
+  setupPrayerReminders();
+}
+
+function syncSettingsUI(s) {
+  // Theme buttons
+  document.getElementById('theme-dark-btn').classList.toggle('active', s.theme === 'dark');
+  document.getElementById('theme-light-btn').classList.toggle('active', s.theme === 'light');
+  // Font size buttons
+  document.getElementById('fs-small-btn').classList.toggle('active', s.fontSize === 'small');
+  document.getElementById('fs-medium-btn').classList.toggle('active', s.fontSize === 'medium');
+  document.getElementById('fs-large-btn').classList.toggle('active', s.fontSize === 'large');
+  // Toggles
+  document.getElementById('notif-enabled-toggle').checked = !!s.notificationsEnabled;
+  document.getElementById('notif-sound-toggle').checked = !!s.notifSound;
+  document.getElementById('notif-parent-msg-toggle').checked = !!s.notifParentMsg;
+  document.getElementById('notif-session-reminder-toggle').checked = !!s.notifSessionReminder;
+  document.getElementById('notif-commitment-toggle').checked = !!s.notifCommitment;
+  document.getElementById('notif-student-logout-toggle').checked = !!s.notifStudentLogout;
+  document.getElementById('prayer-reminder-toggle').checked = !!s.prayerReminder;
+  // Permission UI
+  updatePermissionUI();
+}
+
+// ===== SETTINGS DRAWER =====
+function openSettings() {
+  const s = loadSettingsData();
+  syncSettingsUI(s);
+  document.getElementById('settings-overlay').classList.add('open');
+}
+
+function closeSettings() {
+  document.getElementById('settings-overlay').classList.remove('open');
+}
+
+function settingsOverlayClick(e) {
+  if (e.target === document.getElementById('settings-overlay')) closeSettings();
+}
+
+// ===== THEME =====
+function setTheme(theme) {
+  document.getElementById('theme-dark-btn').classList.toggle('active', theme === 'dark');
+  document.getElementById('theme-light-btn').classList.toggle('active', theme === 'light');
+  if (theme === 'light') {
+    document.documentElement.classList.add('light-mode');
+  } else {
+    document.documentElement.classList.remove('light-mode');
+  }
+  saveSettings();
+}
+
+// ===== FONT SIZE =====
+function setFontSize(size) {
+  ['small', 'medium', 'large'].forEach(s => {
+    document.getElementById('fs-' + s + '-btn').classList.toggle('active', s === size);
+  });
+  document.documentElement.classList.remove('fs-small', 'fs-medium', 'fs-large');
+  document.documentElement.classList.add('fs-' + size);
+  saveSettings();
+}
+
+// ===== NOTIFICATIONS =====
+function updatePermissionUI() {
+  const perm = 'Notification' in window ? Notification.permission : 'unsupported';
+  const lbl = document.getElementById('notif-perm-label');
+  const sub = document.getElementById('notif-perm-sub');
+  const btn = document.getElementById('notif-perm-btn');
+  if (!lbl) return;
+  if (perm === 'granted') {
+    lbl.textContent = 'الإشعارات مفعّلة ✅';
+    sub.textContent = 'تم منح إذن الإشعارات بنجاح';
+    btn.textContent = 'مفعّل';
+    btn.disabled = true;
+    btn.style.background = 'var(--green)';
+  } else if (perm === 'denied') {
+    lbl.textContent = 'الإشعارات محظورة ❌';
+    sub.textContent = 'تم رفض الإذن — فعّلها من إعدادات المتصفح';
+    btn.textContent = 'محظور';
+    btn.disabled = true;
+    btn.style.background = 'var(--red)';
+  } else if (perm === 'unsupported') {
+    lbl.textContent = 'غير مدعوم';
+    sub.textContent = 'المتصفح لا يدعم الإشعارات';
+    btn.disabled = true;
+  } else {
+    lbl.textContent = 'إذن الإشعارات';
+    sub.textContent = 'اضغط للسماح بإشعارات المتصفح';
+    btn.textContent = 'تفعيل';
+    btn.disabled = false;
+    btn.style.background = 'var(--blue)';
+  }
+}
+
+function requestNotifPermission() {
+  if (!('Notification' in window)) { showToast('⚠️ المتصفح لا يدعم الإشعارات'); return; }
+  if (Notification.permission === 'granted') { updatePermissionUI(); return; }
+  Notification.requestPermission().then(perm => {
+    updatePermissionUI();
+    if (perm === 'granted') showToast('✅ تم تفعيل الإشعارات!');
+    else showToast('⚠️ لم يتم منح الإذن');
+  });
+}
+
+function sendNotif(title, body, icon) {
+  const s = loadSettingsData();
+  if (!s.notificationsEnabled) return;
+  if (!('Notification' in window) || Notification.permission !== 'granted') return;
+  const n = new Notification(title, {
+    body: body || '',
+    icon: icon || '📚',
+    badge: '📚',
+    dir: 'rtl',
+    lang: 'ar'
+  });
+  if (s.notifSound) {
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.frequency.value = 880;
+      osc.type = 'sine';
+      gain.gain.setValueAtTime(0.3, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.5);
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + 0.5);
+    } catch(e) {}
+  }
+  setTimeout(() => n.close(), 6000);
+}
+
+function testNotification() {
+  if (!('Notification' in window)) { showToast('⚠️ المتصفح لا يدعم الإشعارات'); return; }
+  if (Notification.permission !== 'granted') {
+    requestNotifPermission();
+    return;
+  }
+  sendNotif('📚 مخطط المذاكرة', 'الإشعارات تعمل بشكل صحيح! 🎉');
+  showToast('✅ تم إرسال إشعار تجريبي!');
+}
+
+// ===== PRAYER REMINDER =====
+const PRAYER_TIMES = [
+  { name: 'الفجر',   time: '04:30' },
+  { name: 'الظهر',   time: '12:00' },
+  { name: 'العصر',   time: '15:30' },
+  { name: 'المغرب',  time: '18:15' },
+  { name: 'العشاء',  time: '19:45' }
+];
+
+let _prayerTimers = [];
+
+function setupPrayerReminders() {
+  _prayerTimers.forEach(t => clearTimeout(t));
+  _prayerTimers = [];
+  const s = loadSettingsData();
+  if (!s.prayerReminder || !s.notificationsEnabled) return;
+  const now = new Date();
+  PRAYER_TIMES.forEach(p => {
+    const [h, m] = p.time.split(':').map(Number);
+    const target = new Date(now);
+    target.setHours(h, m, 0, 0);
+    let diff = target - now;
+    if (diff < 0) diff += 24 * 60 * 60 * 1000;
+    const t = setTimeout(() => {
+      sendNotif('🕌 حان وقت ' + p.name, 'لا تنسَ صلاة ' + p.name + ' 🤲');
+      setupPrayerReminders();
+    }, diff);
+    _prayerTimers.push(t);
+  });
+}
+
+// ===== SESSION 5-MIN REMINDER =====
+let _sessionReminderInterval = null;
+const _notifiedSessions = new Set();
+
+function checkSessionReminders() {
+  const s = loadSettingsData();
+  if (!s.notificationsEnabled || !s.notifSessionReminder) return;
+  if (typeof sessions === 'undefined' || !sessions) return;
+  const now = new Date();
+  const nowMin = now.getHours() * 60 + now.getMinutes();
+  sessions.forEach(sess => {
+    if (sess.done) return;
+    const key = 'sess_' + sess.id;
+    if (_notifiedSessions.has(key)) return;
+    const [h, m] = sess.start.split(':').map(Number);
+    const sessMin = h * 60 + m;
+    const diff = sessMin - nowMin;
+    if (diff > 0 && diff <= 5) {
+      _notifiedSessions.add(key);
+      sendNotif(
+        '⏰ جلسة قريبة — ' + sess.subject,
+        'تبدأ جلسة "' + sess.subject + '" خلال ' + diff + ' دقيقة!'
+      );
+    }
+  });
+}
+
+// ===== COMMITMENT REMINDER =====
+const _notifiedCommitments = new Set();
+
+function checkCommitmentReminders() {
+  const s = loadSettingsData();
+  if (!s.notificationsEnabled || !s.notifCommitment) return;
+  if (typeof currentUid === 'undefined' || !currentUid) return;
+  const slots = (typeof tmGetSlots === 'function') ? tmGetSlots() : [];
+  const now = new Date();
+  const nowMin = now.getHours() * 60 + now.getMinutes();
+  const todayISO = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
+  slots.filter(sl => sl.day === todayISO).forEach(sl => {
+    const key = 'cm_' + sl.id;
+    if (_notifiedCommitments.has(key)) return;
+    const [h, m] = sl.start.split(':').map(Number);
+    const slMin = h * 60 + m;
+    const diff = slMin - nowMin;
+    if (diff > 0 && diff <= 10) {
+      _notifiedCommitments.add(key);
+      sendNotif(
+        '📅 ' + sl.name + ' قريباً',
+        'يبدأ "' + sl.name + '" خلال ' + diff + ' دقيقة!'
+      );
+    }
+  });
+}
+
+// ===== PARENT MESSAGE NOTIFICATION =====
+let _lastMsgCount = 0;
+
+function checkParentMessages() {
+  const s = loadSettingsData();
+  if (!s.notificationsEnabled || !s.notifParentMsg) return;
+  if (typeof currentUid === 'undefined' || !currentUid) return;
+  if (typeof getUserData !== 'function') return;
+  const d = getUserData(currentUid);
+  const unread = (d.messages || []).filter(m => m.unread).length;
+  if (unread > _lastMsgCount && unread > 0) {
+    const diff = unread - _lastMsgCount;
+    sendNotif(
+      '💬 رسالة من ولي الأمر',
+      'وصلتك ' + diff + ' رسالة جديدة من ولي الأمر 📩'
+    );
+  }
+  _lastMsgCount = unread;
+}
+
+// ===== STUDENT LOGOUT NOTIFICATION =====
+function notifyParentStudentLogout() {
+  const s = loadSettingsData();
+  if (!s.notificationsEnabled || !s.notifStudentLogout) return;
+  if (typeof currentUser === 'undefined' || !currentUser) return;
+  if (currentUser.isParent || currentUser.isAdmin) return;
+  // Store logout event for parent to pick up
+  try {
+    const logoutKey = 'ssp2_logout_' + currentUid;
+    localStorage.setItem(logoutKey, JSON.stringify({
+      studentName: currentUser.name,
+      time: new Date().toLocaleString('ar-EG'),
+      ts: Date.now()
+    }));
+  } catch(e) {}
+}
+
+function checkStudentLogoutForParent() {
+  const s = loadSettingsData();
+  if (!s.notificationsEnabled || !s.notifStudentLogout) return;
+  if (typeof currentUser === 'undefined' || !currentUser || !currentUser.isParent) return;
+  if (typeof currentUser.linkedStudent === 'undefined') return;
+  const logoutKey = 'ssp2_logout_' + currentUser.linkedStudent;
+  try {
+    const raw = localStorage.getItem(logoutKey);
+    if (!raw) return;
+    const data = JSON.parse(raw);
+    const age = Date.now() - data.ts;
+    if (age < 10 * 60 * 1000) {
+      sendNotif(
+        '🚪 ' + data.studentName + ' سجّل خروج',
+        'قام ' + data.studentName + ' بتسجيل الخروج الساعة ' + data.time
+      );
+      localStorage.removeItem(logoutKey);
+    }
+  } catch(e) {}
+}
+
+// ===== PERIODIC CHECKS =====
+function startPeriodicChecks() {
+  clearInterval(_sessionReminderInterval);
+  _sessionReminderInterval = setInterval(() => {
+    checkSessionReminders();
+    checkCommitmentReminders();
+    checkParentMessages();
+    checkStudentLogoutForParent();
+  }, 60 * 1000);
+}
+
+// ===== WRAP doLogout TO ADD NOTIFICATION =====
+(function() {
+  const _origLogout = window.doLogout;
+  window.doLogout = function() {
+    notifyParentStudentLogout();
+    if (typeof _origLogout === 'function') _origLogout.apply(this, arguments);
+  };
+})();
+
+// ===== INITIALISE ON DOM READY =====
+document.addEventListener('DOMContentLoaded', function() {
+  const s = loadSettingsData();
+  applySettings(s);
+  startPeriodicChecks();
+  setTimeout(() => {
+    checkParentMessages();
+    checkStudentLogoutForParent();
+  }, 3000);
+});
+
+// ===== CROSS-DEVICE FIREBASE SYNC =====
+
+window._remoteStudents = {};
+window._remoteStudentsFetched = false;
+
+// Fetch all students from Firebase (for parent registration on different device)
+async function prefetchRemoteStudents() {
+  if (!window.fbGet) return;
+  try {
+    const students = await window.fbGet('students');
+    if (students) {
+      window._remoteStudents = students;
+      window._remoteStudentsFetched = true;
+    }
+  } catch(e) {}
+}
+
+// Sync student basic info + link code to Firebase
+function syncStudentToFirebase(uid, userData) {
+  if (!uid || !userData) return;
+  if (userData.isParent || userData.isAdmin) return;
+  if (!window.fbSet) return;
+  window.fbSet('students/' + uid, {
+    name: userData.name,
+    lastLogin: new Date().toISOString(),
+    code: (typeof generateLinkCode === 'function') ? generateLinkCode(uid) : ''
+  }).catch(() => {});
+}
+
+// Sync student session data to Firebase so parent can see it from any device
+function syncStudentDataToFirebase() {
+  if (!window.currentUid || !window.currentUser) return;
+  if (window.currentUser.isParent || window.currentUser.isAdmin) return;
+  if (!window.fbSet) return;
+  try {
+    const d = getUserData(window.currentUid);
+    window.fbSet('userData/' + window.currentUid, {
+      history: d.history || [],
+      sessions: d.sessions || {},
+      streak: d.streak || 0,
+      maxStreak: d.maxStreak || 0,
+      lastDay: d.lastDay || '',
+      messages: d.messages || []
+    }).catch(() => {});
+  } catch(e) {}
+}
+
+// Override findStudentByCode to also check Firebase remote students
+(function() {
+  const _orig = window.findStudentByCode;
+  window.findStudentByCode = function(code) {
+    // Same-device lookup
+    const local = (typeof _orig === 'function') ? _orig(code) : null;
+    if (local) return local;
+    // Cross-device: check Firebase-cached students
+    if (window._remoteStudents) {
+      return Object.keys(window._remoteStudents).find(uid => {
+        const s = window._remoteStudents[uid];
+        // Check by stored code or recompute
+        if (s.code && s.code === code) return true;
+        if (typeof generateLinkCode === 'function' && generateLinkCode(uid) === code) return true;
+        return false;
+      }) || null;
+    }
+    return null;
+  };
+})();
+
+// Override doRegister: fetch Firebase students before parent registration
+(function() {
+  const _orig = window.doRegister;
+  window.doRegister = async function() {
+    const typeEl = document.getElementById('rg-type');
+    const codeEl = document.getElementById('rg-link-code');
+    const errEl = document.getElementById('rg-err');
+    const type = typeEl ? typeEl.value : '';
+    const linkCode = codeEl ? codeEl.value.trim().replace(/\D/g, '') : '';
+
+    if (type === 'parent' && linkCode && window.fbGet) {
+      // Show loading
+      if (errEl) { errEl.textContent = 'جاري التحقق من الكود...'; errEl.className = 'auth-err show'; }
+      try {
+        const students = await window.fbGet('students');
+        if (students) window._remoteStudents = students;
+        window._remoteStudentsFetched = true;
+      } catch(e) {}
+      if (errEl) errEl.className = 'auth-err';
+    }
+    // Call original (now findStudentByCode will also check _remoteStudents)
+    if (typeof _orig === 'function') _orig();
+  };
+})();
+
+// Override loginUser to sync student to Firebase after login
+(function() {
+  const _orig = window.loginUser;
+  window.loginUser = function(uid, userData) {
+    if (typeof _orig === 'function') _orig(uid, userData);
+    // Sync student info to Firebase for cross-device parent registration
+    setTimeout(() => syncStudentToFirebase(uid, userData), 800);
+  };
+})();
+
+// Override saveState to also sync to Firebase
+(function() {
+  const _orig = window.saveState;
+  window.saveState = function() {
+    if (typeof _orig === 'function') _orig();
+    // Debounce: sync to Firebase 2 seconds after save
+    clearTimeout(window._fbSyncTimer);
+    window._fbSyncTimer = setTimeout(syncStudentDataToFirebase, 2000);
+  };
+})();
+
+// Override parRenderAll to also fetch student data from Firebase
+(function() {
+  const _orig = window.parRenderAll;
+  window.parRenderAll = async function() {
+    // Try to fetch fresh student data from Firebase first
+    const uid = window.parStudentUid;
+    if (uid && window.fbGet) {
+      try {
+        const fbData = await window.fbGet('userData/' + uid);
+        if (fbData) {
+          // Merge Firebase data into local storage for this session
+          const localD = getUserData(uid);
+          const merged = Object.assign({}, localD);
+          if (fbData.history && fbData.history.length > (localD.history || []).length) {
+            merged.history = fbData.history;
+          }
+          if (fbData.sessions) {
+            merged.sessions = Object.assign({}, localD.sessions || {}, fbData.sessions);
+          }
+          if ((fbData.streak || 0) > (localD.streak || 0)) {
+            merged.streak = fbData.streak;
+            merged.maxStreak = fbData.maxStreak || merged.streak;
+          }
+          if (fbData.messages) {
+            // Merge messages
+            const localMsgIds = new Set((localD.messages || []).map(m => m.id));
+            const newMsgs = (fbData.messages || []).filter(m => !localMsgIds.has(m.id));
+            merged.messages = [...(localD.messages || []), ...newMsgs];
+          }
+          saveUserData(uid, merged);
+        }
+      } catch(e) {}
+    }
+    if (typeof _orig === 'function') _orig();
+  };
+})();
+
+// Override sendMsg to also sync messages to Firebase immediately
+(function() {
+  const _orig = window.sendMsg;
+  window.sendMsg = function() {
+    if (typeof _orig === 'function') _orig();
+    // Sync student data to Firebase after message sent
+    setTimeout(() => {
+      const uid = window.parStudentUid;
+      if (uid && window.fbSet && typeof getUserData === 'function') {
+        const d = getUserData(uid);
+        window.fbSet('userData/' + uid + '/messages', d.messages || []).catch(() => {});
+      }
+    }, 500);
+  };
+})();
+
+// Prefetch remote students when page loads (helps parent registration later)
+setTimeout(prefetchRemoteStudents, 2000);
+</script>
+<script src="https://replit-cdn.com/replit-pill/replit-pill.global.js" data-repl-id="3205a34d-2b52-4342-92fd-32567c11950c"></script></body>
 </html>
